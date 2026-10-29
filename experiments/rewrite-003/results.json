@@ -1,0 +1,21 @@
+{
+  "sample_rate": 24000,
+  "event_A_source_end_s": 1.6,
+  "event_B_source_end_s": 2.25,
+  "edit_time_s": 2.8,
+  "fade_seconds": 0.04,
+  "global_gain": 1.2148019180458844,
+  "baseline_event_A_source_snr_db": 2.0835888281612203,
+  "baseline_event_B_source_snr_db": 2.195377302199983,
+  "template_event_A_source_snr_db": 7.202861866585374,
+  "template_event_B_source_snr_db": 7.314650340624135,
+  "template_mixture_reconstruction_snr_db": 226.06581271855867,
+  "known_stem_erase_A_residual_rms_after_fade": 0.0,
+  "known_stem_B_unintended_change_max": 0.0,
+  "baseline_A_tail_snr_after_edit_db": 0.5723582263941664,
+  "baseline_B_tail_snr_after_edit_db": 6.471825995847854,
+  "template_A_tail_snr_after_edit_db": 5.589018141776584,
+  "template_B_tail_snr_after_edit_db": 11.488485911230272,
+  "numpy_event_tail_memory_bytes": 3072000,
+  "elapsed_seconds": 0.34714620001614094
+}
