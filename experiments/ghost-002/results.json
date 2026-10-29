@@ -1,0 +1,155 @@
+{
+  "seed": 20261029,
+  "samplerate": 48000,
+  "checkpoint_sha256": "0875195056b2990d411a6b38e63c5ea591d2df9b9bd4ac2c25c06a65c9e16de1",
+  "checkpoint_url": "https://huggingface.co/Tangible-Music-Lab/RAVE_models/resolve/3bf275ff6e223ddf9e82aacc5e9933f4af401fe8/freesoundloop10k_default_b2048_r48000_z16.ts",
+  "model": "Tangible Music Lab RAVE freesoundloop10k default",
+  "torch": "2.15.0+cpu",
+  "device": "CPU",
+  "mutation": 0.65,
+  "inheritance_waveform_mix": 0.3,
+  "evolution": "chain",
+  "identity_order": [
+    "metal",
+    "voice",
+    "noise"
+  ],
+  "global_gain": 0.9665251002503645,
+  "metrics": {
+    "melodic": {
+      "times_s": [
+        0.9437580999801867,
+        0.7224877999979071,
+        0.692167499975767
+      ],
+      "source_peak": 0.327196594853945,
+      "descendant_rms": [
+        0.09331431477204805,
+        0.07685053668675859,
+        0.04311752848581638
+      ],
+      "descendant_source_correlation": [
+        0.32387335547879653,
+        0.00033905218163660295,
+        0.04234675226318377
+      ],
+      "source_descriptors": {
+        "rms_envelope_correlation": 1.0,
+        "best_envelope_correlation_within_500ms": 1.0,
+        "best_envelope_lag_ms": 0.0,
+        "spectral_centroid_hz": 1357.3247951116773,
+        "median_known_note_local_peak_error_cents": 1.7853558572037165
+      },
+      "neural_descriptors": [
+        {
+          "rms_envelope_correlation": 0.8906176268450473,
+          "best_envelope_correlation_within_500ms": 0.9312364259191854,
+          "best_envelope_lag_ms": 10.67,
+          "spectral_centroid_hz": 1219.813223561822,
+          "median_known_note_local_peak_error_cents": 3.207466863517753
+        },
+        {
+          "rms_envelope_correlation": 0.7759843899374135,
+          "best_envelope_correlation_within_500ms": 0.8967045708656423,
+          "best_envelope_lag_ms": 21.33,
+          "spectral_centroid_hz": 912.4850583669046,
+          "median_known_note_local_peak_error_cents": 10.489033794710416
+        },
+        {
+          "rms_envelope_correlation": 0.6919333522443649,
+          "best_envelope_correlation_within_500ms": 0.8516213139627049,
+          "best_envelope_lag_ms": 32.0,
+          "spectral_centroid_hz": 2300.8469816701477,
+          "median_known_note_local_peak_error_cents": 7.909607300574725
+        }
+      ],
+      "baseline_descriptors": [
+        {
+          "rms_envelope_correlation": 0.999985009956363,
+          "best_envelope_correlation_within_500ms": 0.999985009956363,
+          "best_envelope_lag_ms": 0.0,
+          "spectral_centroid_hz": 1024.4161865337362,
+          "median_known_note_local_peak_error_cents": 1.7853558572037165
+        },
+        {
+          "rms_envelope_correlation": 0.9999212542808608,
+          "best_envelope_correlation_within_500ms": 0.9999212542808608,
+          "best_envelope_lag_ms": 0.0,
+          "spectral_centroid_hz": 910.6611269744745,
+          "median_known_note_local_peak_error_cents": 1.7853558572037165
+        },
+        {
+          "rms_envelope_correlation": 0.9995085201949624,
+          "best_envelope_correlation_within_500ms": 0.9995085201949624,
+          "best_envelope_lag_ms": 0.0,
+          "spectral_centroid_hz": 691.1817081603305,
+          "median_known_note_local_peak_error_cents": 1.7853558572037165
+        }
+      ]
+    },
+    "percussive": {
+      "times_s": [
+        0.7410752000287175,
+        0.682681699981913,
+        0.6877950999769382
+      ],
+      "source_peak": 0.8794391369451446,
+      "descendant_rms": [
+        0.03960766469778795,
+        0.042331953844861055,
+        0.03447189741682408
+      ],
+      "descendant_source_correlation": [
+        0.48276687015215614,
+        0.14682494877882135,
+        0.061966631397037765
+      ],
+      "source_descriptors": {
+        "rms_envelope_correlation": 0.9999999999999999,
+        "best_envelope_correlation_within_500ms": 0.9999999999999999,
+        "best_envelope_lag_ms": 0.0,
+        "spectral_centroid_hz": 11228.303054572476
+      },
+      "neural_descriptors": [
+        {
+          "rms_envelope_correlation": 0.916639243974347,
+          "best_envelope_correlation_within_500ms": 0.9592603247993058,
+          "best_envelope_lag_ms": 10.67,
+          "spectral_centroid_hz": 8945.859740461903
+        },
+        {
+          "rms_envelope_correlation": 0.6105406056602863,
+          "best_envelope_correlation_within_500ms": 0.8588021717841707,
+          "best_envelope_lag_ms": 21.33,
+          "spectral_centroid_hz": 5410.011889301274
+        },
+        {
+          "rms_envelope_correlation": 0.4721852528006164,
+          "best_envelope_correlation_within_500ms": 0.8834132539943379,
+          "best_envelope_lag_ms": 21.33,
+          "spectral_centroid_hz": 4512.194376393228
+        }
+      ],
+      "baseline_descriptors": [
+        {
+          "rms_envelope_correlation": 0.9997533095007319,
+          "best_envelope_correlation_within_500ms": 0.9997533095007319,
+          "best_envelope_lag_ms": 0.0,
+          "spectral_centroid_hz": 3769.7494947289974
+        },
+        {
+          "rms_envelope_correlation": 0.9995097124294974,
+          "best_envelope_correlation_within_500ms": 0.9995097124294974,
+          "best_envelope_lag_ms": 0.0,
+          "spectral_centroid_hz": 1592.9148927354347
+        },
+        {
+          "rms_envelope_correlation": 0.9987453948776568,
+          "best_envelope_correlation_within_500ms": 0.9987453948776568,
+          "best_envelope_lag_ms": 0.0,
+          "spectral_centroid_hz": 632.2586322051914
+        }
+      ]
+    }
+  }
+}
