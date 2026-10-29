@@ -1,0 +1,15 @@
+{
+  "sample_rate": 48000,
+  "ghost_source_end_s": 2.4,
+  "other_source_end_s": 2.25,
+  "room_motion_start_s": 2.8,
+  "room_motion_end_s": 3.8,
+  "edit_start_s": 3.2,
+  "superposition_max_abs_error": 9.43689570931383e-16,
+  "ghost_remaining_after_erase_max": 0.0,
+  "other_component_change_max": 1.1102230246251565e-16,
+  "global_gain": 0.7129438667021647,
+  "elapsed_s": 0.9783193999901414,
+  "ghost_input": "experiments\\ghost-002\\renders\\melodic_descendant_1.wav",
+  "event_room_memory_bytes": 12288000
+}
