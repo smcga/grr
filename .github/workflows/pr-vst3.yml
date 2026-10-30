@@ -1,0 +1,88 @@
+name: Build Windows VST3
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-vst3:
+    name: Build and package Windows VST3
+    runs-on: windows-2022
+    timeout-minutes: 30
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v4
+
+      - name: Check out JUCE 8.0.6
+        uses: actions/checkout@v4
+        with:
+          repository: juce-framework/JUCE
+          ref: 8.0.6
+          path: third_party/JUCE
+
+      - name: Configure and build main plugin
+        shell: pwsh
+        run: |
+          cmake -S . -B build/main -G "Visual Studio 17 2022" -A x64 -DJUCE_PATH="$env:GITHUB_WORKSPACE/third_party/JUCE"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build build/main --config Release --target GhostRoomRewrites_VST3 grr_dsp_test --parallel 1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ctest --test-dir build/main -C Release --output-on-failure
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Configure and build ROOM-001 plugin
+        shell: pwsh
+        run: |
+          cmake -S experiments/room-001/vst3 -B build/room001 -G "Visual Studio 17 2022" -A x64 -DJUCE_PATH="$env:GITHUB_WORKSPACE/third_party/JUCE"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build build/room001 --config Release --target Room001Audition_VST3 Room001Smoke --parallel 1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ctest --test-dir build/room001 -C Release --output-on-failure
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Assemble complete VST3 bundles
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $main = 'build/main/GhostRoomRewrites_artefacts/Release/VST3/GHOST ROOM REWRITES.vst3'
+          $room = 'build/room001/Room001Audition_artefacts/Release/VST3/GRR ROOM-001.vst3'
+          foreach ($bundle in @($main, $room)) {
+            if (-not (Test-Path -LiteralPath "$bundle/Contents/x86_64-win" -PathType Container)) {
+              throw "VST3 bundle is missing its Windows binary folder: $bundle"
+            }
+          }
+          New-Item -ItemType Directory -Path package -Force | Out-Null
+          Copy-Item -LiteralPath $main, $room -Destination package -Recurse
+          @'
+          Windows x64 VST3 preview builds
+
+          Extract this download. Copy each complete .vst3 folder that you want to
+          C:\Program Files\Common Files\VST3, then rescan effects in your DAW.
+          These are experimental PR builds, not signed releases. Start at a low volume.
+          '@ | Set-Content -LiteralPath package/INSTALL.txt -Encoding utf8
+
+      - name: Upload VST3 download
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: GRR-Windows-VST3-${{ github.run_id }}
+          path: package/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Add download link to build summary
+        shell: pwsh
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          @"
+          ## Windows VST3 preview builds
+
+          [Download GHOST ROOM REWRITES and ROOM-001]($env:ARTIFACT_URL)
+
+          The download contains both complete Windows x64 VST3 bundles and installation instructions.
+          You must be signed in to GitHub to download the artifact. It expires after 30 days.
+          "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8

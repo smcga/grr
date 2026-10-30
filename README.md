@@ -140,6 +140,10 @@ cmake --build build-test --config Release
 ctest --test-dir build-test -C Release --output-on-failure
 ```
 
+### Pull request preview downloads
+
+Every pull request runs the **Build Windows VST3** GitHub Actions workflow. When it passes, open the pull request’s **Checks** tab, select **Build Windows VST3**, and open the job summary. The summary links to a ZIP containing the Windows x64 GHOST ROOM REWRITES and ROOM-001 VST3 bundles. The same ZIP appears under **Artifacts** on the Actions run page. You must be signed in to GitHub to download it; artifacts expire after 30 days. Extract the ZIP and copy the complete `.vst3` folders into `C:\Program Files\Common Files\VST3`, then rescan your DAW. These are experimental, unsigned PR builds, not release installers. The workflow also runs both projects’ smoke tests.
+
 ### Explore the existing shell
 
 1. Insert GRR on a **stereo** track. Start with the master mix at about 25–35% and a safe monitoring level.
